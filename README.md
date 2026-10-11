@@ -11,8 +11,7 @@ Instead of weighing down the system with complex UI or audio libraries, the filt
 * **Optimized Rendering**: Leverages branchless C processing and lookup tables (LUT) to keep CPU overhead extremely low.
 
 ## Repository Structure
-* **`ascii_filter.c`**: The core filter. Intercepts X11 shared images, loads the 8x8 font, and applies the real-time ASCII conversion on pixel blocks.
-* **`shrink_gst.c`**: Experimental/support file for handling GStreamer plugins.
+* **`ascii_renderer.c`**: The core filter. Intercepts X11 shared images, loads the 8x8 font, and applies the real-time ASCII conversion on pixel blocks.
 
 ## Requirements
 * Linux system with an X11 or Xwayland display server.
@@ -26,5 +25,5 @@ Instead of weighing down the system with complex UI or audio libraries, the filt
 2. Clone the repository, compile the shared library, and run the player with `LD_PRELOAD`:
 
 ```bash
-"gcc -fPIC -shared -o ascii_filter.so ascii_filter.c -ldl -lX11 -lXext -lGL -mavx2"
-"LD_PRELOAD=./ascii_filter.so parole"
+"gcc -fPIC -shared -o ascii_renderer.so ascii_renderer.c -ldl -lX11 -lXext -lGL -mavx2"
+"LD_PRELOAD=./ascii_renderer.so parole"
